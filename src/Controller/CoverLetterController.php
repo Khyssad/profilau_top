@@ -11,7 +11,7 @@ class CoverLetterController extends AbstractController
     #[Route('/cover/letter', name: 'app_cover_letter')]
     public function index(): Response
     {
-        return $this->render('cover_letter/index.html.twig', [
+        return $this->render('cover_letter/show.html.twig', [
             'controller_name' => 'CoverLetterController',
         ]);
     }

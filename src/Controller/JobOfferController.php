@@ -11,7 +11,7 @@ class JobOfferController extends AbstractController
     #[Route('/job/offer', name: 'app_job_offer')]
     public function index(): Response
     {
-        return $this->render('job_offer/index.html.twig', [
+        return $this->render('job_offer/list.html.twig', [
             'controller_name' => 'JobOfferController',
         ]);
     }

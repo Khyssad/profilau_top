@@ -5,12 +5,15 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-class User
+#[ORM\HasLifecycleCallbacks]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -20,7 +23,10 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[ORM\Column(length: 255)]
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
@@ -64,6 +70,9 @@ class User
         $this->jobOffers = new ArrayCollection();
         $this->linkedInMessages = new ArrayCollection();
         $this->coverLetters = new ArrayCollection();
+        $this->roles = ['ROLE_USER'];
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -79,10 +88,12 @@ class User
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
     public function getPassword(): ?string
     {
         return $this->password;
@@ -91,8 +102,26 @@ class User
     public function setPassword(string $password): static
     {
         $this->password = $password;
-
         return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
     }
 
     public function getFirstName(): ?string
@@ -103,7 +132,6 @@ class User
     public function setFirstName(string $firstName): static
     {
         $this->firstName = $firstName;
-
         return $this;
     }
 
@@ -115,7 +143,6 @@ class User
     public function setLastName(string $lastName): static
     {
         $this->lastName = $lastName;
-
         return $this;
     }
 
@@ -127,7 +154,6 @@ class User
     public function setCreatedAt(\DateTimeImmutable $createdAt): static
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
 
@@ -139,8 +165,20 @@ class User
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
-
         return $this;
+    }
+
+    #[ORM\PrePersist]
+    public function setCreatedAtValue(): void
+    {
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    #[ORM\PreUpdate]
+    public function setUpdatedAtValue(): void
+    {
+        $this->updatedAt = new \DateTimeImmutable();
     }
 
     public function getImage(): ?string
@@ -151,19 +189,20 @@ class User
     public function setImage(?string $image): static
     {
         $this->image = $image;
-
         return $this;
     }
 
     public function getRoles(): array
     {
-        return $this->roles;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
     }
 
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
-
         return $this;
     }
 
@@ -181,7 +220,6 @@ class User
             $this->jobOffers->add($jobOffer);
             $jobOffer->setAppUser($this);
         }
-
         return $this;
     }
 
@@ -193,7 +231,6 @@ class User
                 $jobOffer->setAppUser(null);
             }
         }
-
         return $this;
     }
 
@@ -211,7 +248,6 @@ class User
             $this->linkedInMessages->add($linkedInMessage);
             $linkedInMessage->setAppUser($this);
         }
-
         return $this;
     }
 
@@ -223,7 +259,6 @@ class User
                 $linkedInMessage->setAppUser(null);
             }
         }
-
         return $this;
     }
 
@@ -241,7 +276,6 @@ class User
             $this->coverLetters->add($coverLetter);
             $coverLetter->setAppUser($this);
         }
-
         return $this;
     }
 
@@ -253,7 +287,6 @@ class User
                 $coverLetter->setAppUser(null);
             }
         }
-
         return $this;
     }
 }

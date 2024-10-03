@@ -11,7 +11,7 @@ class LinkedInMessageController extends AbstractController
     #[Route('/linked/in/message', name: 'app_linked_in_message')]
     public function index(): Response
     {
-        return $this->render('linked_in_message/index.html.twig', [
+        return $this->render('linkedin_message/show.html.twig', [
             'controller_name' => 'LinkedInMessageController',
         ]);
     }

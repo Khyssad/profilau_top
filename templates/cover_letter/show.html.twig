@@ -1,20 +1,102 @@
 {% extends 'base.html.twig' %}
+{# Cette ligne indique que ce template étend un template de base appelé 'base.html.twig' #}
 
-{% block title %}Hello CoverLetterController!{% endblock %}
+{% block title %}Générateur de Lettre de Motivation{% endblock %}
+{# Définit le titre de la page qui sera affiché dans l'onglet du navigateur #}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{# Commence le bloc principal du contenu de la page #}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container mx-auto px-4 py-8 max-w-2xl">
+{# Crée un conteneur principal avec des marges et une largeur maximale #}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/SYED Salman/Desktop/Formation CDA/Symfony/1-Introduction/profilau_top/src/Controller/CoverLetterController.php</code></li>
-        <li>Your template at <code>C:/Users/SYED Salman/Desktop/Formation CDA/Symfony/1-Introduction/profilau_top/templates/cover_letter/index.html.twig</code></li>
-    </ul>
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Générateur de Lettre de Motivation</h1>
+    {# Affiche le titre principal de la page #}
+    
+    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    {# Crée une boîte blanche avec une ombre et des coins arrondis pour le contenu principal #}
+
+        <p class="mb-4 text-gray-700">Bienvenue, <span class="font-semibold">{{ user.firstName }} {{ user.lastName }}</span> !</p>
+        {# Affiche un message de bienvenue avec le nom de l'utilisateur #}
+
+        <p class="mb-6 text-gray-600">Veuillez fournir des informations supplémentaires sur vos compétences et l'entreprise où vous souhaitez effectuer votre stage. Notre IA générera une lettre de motivation adaptée.</p>
+        {# Affiche des instructions pour l'utilisateur #}
+        
+        <form id="cover-letter-form">
+        {# Commence un formulaire pour saisir les informations de l'utilisateur #}
+
+            <div class="mb-4">
+                <textarea id="user-input" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="5" placeholder="Exemple : J'ai des compétences en Java et JavaScript, et je recherche un stage chez une entreprise spécialisée en développement web." required></textarea>
+            </div>
+            {# Crée une zone de texte pour que l'utilisateur entre ses informations #}
+
+            <div class="flex items-center justify-between">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Générer la Lettre
+                </button>
+            </div>
+            {# Crée un bouton pour soumettre le formulaire #}
+
+        </form>
+    </div>
+
+    <div id="loading" class="hidden text-center my-4">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+        <p class="mt-2 text-gray-600">Génération de votre lettre de motivation...</p>
+    </div>
+    {# Crée un indicateur de chargement (initialement caché) #}
+
+    <div id="cover-letter-result" class="bg-gray-100 border border-gray-300 rounded p-4 mt-6 whitespace-pre-wrap"></div>
+    {# Crée une zone pour afficher la lettre de motivation générée #}
+
 </div>
+
+<script>
+// Commence un bloc de code JavaScript
+document.getElementById('cover-letter-form').addEventListener('submit', function(e) {
+    // Ajoute un écouteur d'événements pour le formulaire quand il est soumis
+    e.preventDefault();
+    // Empêche le comportement par défaut du formulaire (rechargement de la page)
+    var userInput = document.getElementById('user-input');
+    // Récupère la saisie de l'utilisateur
+    var loading = document.getElementById('loading');
+    // Récupère l'élément de chargement
+    var result = document.getElementById('cover-letter-result');
+    // Récupère l'élément où le résultat sera affiché
+    
+    loading.style.display = 'block';
+    // Affiche l'indicateur de chargement
+    result.textContent = '';
+    // Efface tout contenu précédent dans la zone de résultat
+
+    fetch('{{ path('app_cover_letter_generate') }}', {
+        // Envoie une requête au serveur pour générer la lettre
+        method: 'POST',
+        // Utilise la méthode POST pour envoyer des données
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-Requested-With': 'XMLHttpRequest'
+        },
+        // Définit les en-têtes de la requête
+        body: 'message=' + encodeURIComponent(userInput.value)
+        // Envoie la saisie de l'utilisateur dans le corps de la requête
+    })
+    .then(response => response.json())
+    // Traite la réponse du serveur comme du JSON
+    .then(data => {
+        result.textContent = data.response;
+        // Affiche la lettre générée dans la zone de résultat
+    })
+    .catch(error => {
+        result.textContent = 'Une erreur est survenue lors de la génération de la lettre.';
+        // Affiche un message d'erreur si quelque chose ne va pas
+    })
+    .finally(() => {
+        loading.style.display = 'none';
+        // Cache l'indicateur de chargement une fois terminé
+    });
+});
+// Fin du bloc de code JavaScript
+</script>
 {% endblock %}
+{# Fin du bloc principal du contenu de la page #}

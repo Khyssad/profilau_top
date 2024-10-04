@@ -1,20 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello JobOfferController!{% endblock %}
+{% block title %}Liste des offres d'emploi{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Liste des offres d'emploi</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/SYED Salman/Desktop/Formation CDA/Symfony/1-Introduction/profilau_top/src/Controller/JobOfferController.php</code></li>
-        <li>Your template at <code>C:/Users/SYED Salman/Desktop/Formation CDA/Symfony/1-Introduction/profilau_top/templates/job_offer/index.html.twig</code></li>
-    </ul>
-</div>
+        {% if job_offer is empty %}
+            <p class="text-gray-600 text-center">Aucune offre d'emploi n'est disponible pour le moment.</p>
+        {% else %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {% for job_offer in job_offer %}
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden transition duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-xl">
+                        <div class="p-6">
+                            <h2 class="text-xl font-semibold mb-2 text-gray-800">{{ job_offer.title }}</h2>
+                            <p class="text-gray-600 mb-4">{{ job_offer.company }}</p>
+                            <p class="text-sm text-gray-500 mb-2 flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                {{ job_offer.location ?? 'Non spécifié' }}
+                            </p>
+                            <p class="text-sm text-gray-500 mb-4 flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                {{ job_offer.salary ?? 'Non spécifié' }}
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-semibold text-blue-500">{{ job_offer.status }}</span>
+                                <div>
+                                    <a href="{{ path('app_job_offer_show', {'id': job_offer.id}) }}" class="text-blue-500 hover:text-blue-700 mr-2">Voir détails</a>
+                                    <a href="{{ path('app_job_offer_edit', {'id': job_offer.id}) }}" class="text-green-500 hover:text-green-700">Modifier</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}

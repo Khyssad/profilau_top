@@ -7,14 +7,5 @@
 	<div class="container">
 		<h1>Bienvenue sur Profilau.top</h1>
 		<p>Votre plateforme de gestion de recherche d'emploi</p>
-
-		{% if app.user %}
-			<p>Connecté
-			</p>
-			<a href="{{ path('app_logout') }}" class="btn btn-secondary">Se déconnecter</a>
-		{% else %}
-			<a href="{{ path('app_login') }}" class="btn btn-primary">Se connecter</a>
-			<a href="{{ path('app_registration') }}" class="btn btn-success">S'inscrire</a>
-		{% endif %}
 	</div>
 {% endblock %}

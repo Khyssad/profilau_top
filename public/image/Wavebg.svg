@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 730" preserveAspectRatio="xMidYMid" width="1536" height="730" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);" xmlns:xlink="http://www.w3.org/1999/xlink"><g><linearGradient y2="1" y1="0" x2="0" x1="0" id="lg-2qagz67cx3l-0">
+  <stop offset="0" stop-color="#b5b8bf"></stop>
+  <stop offset="1" stop-color="#225ea8"></stop>
+</linearGradient><linearGradient y2="1" y1="0" x2="0" x1="0" id="lg-2qagz67cx3l-1">
+  <stop offset="0" stop-color="#225ea8"></stop>
+  <stop offset="1" stop-color="#1d91c0"></stop>
+</linearGradient><linearGradient y2="1" y1="0" x2="0" x1="0" id="lg-2qagz67cx3l-2">
+  <stop offset="0" stop-color="#1d91c0"></stop>
+  <stop offset="1" stop-color="#41b6c4"></stop>
+</linearGradient><linearGradient y2="1" y1="0" x2="0" x1="0" id="lg-2qagz67cx3l-3">
+  <stop offset="0" stop-color="#41b6c4"></stop>
+  <stop offset="1" stop-color="#7fcdbb"></stop>
+</linearGradient><linearGradient y2="1" y1="0" x2="0" x1="0" id="lg-2qagz67cx3l-4">
+  <stop offset="0" stop-color="#7fcdbb"></stop>
+  <stop offset="1" stop-color="#c7e9b4"></stop>
+</linearGradient><linearGradient y2="1" y1="0" x2="0" x1="0" id="lg-2qagz67cx3l-5">
+  <stop offset="0" stop-color="#c7e9b4"></stop>
+  <stop offset="1" stop-color="#f3f8cf"></stop>
+</linearGradient><linearGradient y2="1" y1="0" x2="0" x1="0" id="lg-2qagz67cx3l-6">
+  <stop offset="0" stop-color="#f3f8cf"></stop>
+  <stop offset="1" stop-color="#b5b8bf"></stop>
+</linearGradient><path fill-opacity="0.88" fill="url(#lg-2qagz67cx3l-0)" d="M0 0L0 712.44Q153.60 692.07 307.20 664.45T614.40 689.90T921.60 566.34T1228.80 505.06T1536 502.94L1536 0Z">
+  <animate values="M0 0L0 712.44Q153.60 692.07 307.20 664.45T614.40 689.90T921.60 566.34T1228.80 505.06T1536 502.94L1536 0Z;M0 0L0 766.25Q153.60 752.72 307.20 729.14T614.40 636.40T921.60 588.32T1228.80 523.32T1536 526.98L1536 0Z;M0 0L0 730.71Q153.60 734.02 307.20 707.96T614.40 719.10T921.60 600.33T1228.80 542.47T1536 520.90L1536 0Z;M0 0L0 712.44Q153.60 692.07 307.20 664.45T614.40 689.90T921.60 566.34T1228.80 505.06T1536 502.94L1536 0Z" begin="0s" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" calcMode="spline" keyTimes="0;0.333;0.667;1" repeatCount="indefinite" dur="10s" attributeName="d"></animate>
+</path><path fill-opacity="0.88" fill="url(#lg-2qagz67cx3l-1)" d="M0 0L0 661.07Q153.60 638.22 307.20 612.90T614.40 620.66T921.60 473.97T1228.80 448.52T1536 484.21L1536 0Z">
+  <animate values="M0 0L0 661.07Q153.60 638.22 307.20 612.90T614.40 620.66T921.60 473.97T1228.80 448.52T1536 484.21L1536 0Z;M0 0L0 665.88Q153.60 723.12 307.20 700.32T614.40 528.96T921.60 572.06T1228.80 491.88T1536 437.84L1536 0Z;M0 0L0 721.32Q153.60 748.33 307.20 703.66T614.40 546.89T921.60 534.21T1228.80 456T1536 488.85L1536 0Z;M0 0L0 661.07Q153.60 638.22 307.20 612.90T614.40 620.66T921.60 473.97T1228.80 448.52T1536 484.21L1536 0Z" begin="-1.67s" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" calcMode="spline" keyTimes="0;0.333;0.667;1" repeatCount="indefinite" dur="10s" attributeName="d"></animate>
+</path><path fill-opacity="0.88" fill="url(#lg-2qagz67cx3l-2)" d="M0 0L0 562.14Q153.60 489.96 307.20 456.76T614.40 411.12T921.60 390.05T1228.80 345.41T1536 345.06L1536 0Z">
+  <animate values="M0 0L0 562.14Q153.60 489.96 307.20 456.76T614.40 411.12T921.60 390.05T1228.80 345.41T1536 345.06L1536 0Z;M0 0L0 534.44Q153.60 571.99 307.20 542.50T614.40 387.69T921.60 359.43T1228.80 440.99T1536 412.67L1536 0Z;M0 0L0 544.80Q153.60 482.15 307.20 457.76T614.40 509.81T921.60 422.01T1228.80 470.92T1536 403.15L1536 0Z;M0 0L0 562.14Q153.60 489.96 307.20 456.76T614.40 411.12T921.60 390.05T1228.80 345.41T1536 345.06L1536 0Z" begin="-3.33s" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" calcMode="spline" keyTimes="0;0.333;0.667;1" repeatCount="indefinite" dur="10s" attributeName="d"></animate>
+</path><path fill-opacity="0.88" fill="url(#lg-2qagz67cx3l-3)" d="M0 0L0 420.50Q153.60 435.31 307.20 402.95T614.40 404.75T921.60 390.76T1228.80 253.93T1536 208.50L1536 0Z">
+  <animate values="M0 0L0 420.50Q153.60 435.31 307.20 402.95T614.40 404.75T921.60 390.76T1228.80 253.93T1536 208.50L1536 0Z;M0 0L0 452.99Q153.60 401.50 307.20 354.88T614.40 374.94T921.60 395.18T1228.80 358.40T1536 303.52L1536 0Z;M0 0L0 468.01Q153.60 381.87 307.20 365.42T614.40 299.06T921.60 361.38T1228.80 247.37T1536 229.64L1536 0Z;M0 0L0 420.50Q153.60 435.31 307.20 402.95T614.40 404.75T921.60 390.76T1228.80 253.93T1536 208.50L1536 0Z" begin="-5s" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" calcMode="spline" keyTimes="0;0.333;0.667;1" repeatCount="indefinite" dur="10s" attributeName="d"></animate>
+</path><path fill-opacity="0.88" fill="url(#lg-2qagz67cx3l-4)" d="M0 0L0 326.88Q153.60 372.79 307.20 327.80T614.40 238.50T921.60 314.14T1228.80 199.59T1536 239.46L1536 0Z">
+  <animate values="M0 0L0 326.88Q153.60 372.79 307.20 327.80T614.40 238.50T921.60 314.14T1228.80 199.59T1536 239.46L1536 0Z;M0 0L0 329.90Q153.60 264.45 307.20 245.27T614.40 294.66T921.60 250.14T1228.80 287.33T1536 134.27L1536 0Z;M0 0L0 234.31Q153.60 249.70 307.20 214.33T614.40 199.74T921.60 243.27T1228.80 223.77T1536 194.46L1536 0Z;M0 0L0 326.88Q153.60 372.79 307.20 327.80T614.40 238.50T921.60 314.14T1228.80 199.59T1536 239.46L1536 0Z" begin="-6.67s" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" calcMode="spline" keyTimes="0;0.333;0.667;1" repeatCount="indefinite" dur="10s" attributeName="d"></animate>
+</path><path fill-opacity="0.88" fill="url(#lg-2qagz67cx3l-5)" d="M0 0L0 130.64Q153.60 162.32 307.20 142.05T614.40 206.60T921.60 100.58T1228.80 185.04T1536 94.27L1536 0Z">
+  <animate values="M0 0L0 130.64Q153.60 162.32 307.20 142.05T614.40 206.60T921.60 100.58T1228.80 185.04T1536 94.27L1536 0Z;M0 0L0 201.90Q153.60 138.02 307.20 98.42T614.40 197.82T921.60 96.56T1228.80 178.75T1536 190.60L1536 0Z;M0 0L0 136.53Q153.60 136.55 307.20 120.27T614.40 185.09T921.60 84.57T1228.80 154.25T1536 141.85L1536 0Z;M0 0L0 130.64Q153.60 162.32 307.20 142.05T614.40 206.60T921.60 100.58T1228.80 185.04T1536 94.27L1536 0Z" begin="-8.33s" keySplines="0.5 0 0.5 1;0.5 0 0.5 1;0.5 0 0.5 1" calcMode="spline" keyTimes="0;0.333;0.667;1" repeatCount="indefinite" dur="10s" attributeName="d"></animate>
+</path><g></g></g><!-- [ldio] generated by https://loading.io --></svg>

@@ -1,20 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello JobOfferController!{% endblock %}
+{% block title %}Détails de l'offre d'emploi{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        <h1 class="text-3xl font-bold mb-6 text-gray-800">Détails de l'offre d'emploi</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <h2 class="text-2xl font-semibold text-gray-800">{{ job_offer.title }}</h2>
+                <p class="text-gray-600">{{ job_offer.company }}</p>
+            </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/SYED Salman/Desktop/Formation CDA/Symfony/1-Introduction/profilau_top/src/Controller/JobOfferController.php</code></li>
-        <li>Your template at <code>C:/Users/SYED Salman/Desktop/Formation CDA/Symfony/1-Introduction/profilau_top/templates/job_offer/index.html.twig</code></li>
-    </ul>
-</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <p class="text-sm text-gray-600">Lieu</p>
+                    <p class="font-semibold">{{ job_offer.location }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-600">Salaire</p>
+                    <p class="font-semibold">{{ job_offer.salary }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-600">Personne de contact</p>
+                    <p class="font-semibold">{{ job_offer.contactPerson }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-600">Email de contact</p>
+                    <p class="font-semibold">{{ job_offer.contactEmail }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-600">Date de candidature</p>
+                    <p class="font-semibold">{{ job_offer.applicationDate ? job_offer.applicationDate|date('d/m/Y') : 'Non spécifiée' }}</p>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-600">Statut</p>
+                    <p class="font-semibold text-blue-500">{{ job_offer.status }}</p>
+                </div>
+            </div>
+
+            {% if job_offer.link %}
+                <div class="mt-4">
+                    <p class="text-sm text-gray-600">Lien de l'offre</p>
+                    <a href="{{ job_offer.link }}" target="_blank" class="text-blue-500 hover:text-blue-700">{{ job_offer.link }}</a>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="mt-6">
+            <a href="{{ path('app_job_offer') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                Retour à la liste
+            </a>
+        </div>
+    </div>
 {% endblock %}

@@ -1,56 +1,91 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Bienvenue{% endblock %}</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .hero-image {
-            background-image: url('chemin/vers/votre/image/de/ville.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-    </style>
-</head>
-<body class="font-sans">
-    <header class="bg-white shadow-sm">
-        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="{{ path('app_home') }}" class="text-2xl font-bold text-blue-500">VotreJob</a>
-            <div>
-                <a href="{{ path('app_login') }}" class="text-gray-600 hover:text-gray-800 mr-4">Se connecter</a>
-                <a href="{{ path('app_registration') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">S'inscrire</a>
-            </div>
-        </nav>
-    </header>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>
+			{% block title %}Bienvenue
+			{% endblock %}
+		</title>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<style>
+			.hero-image {
+				background-image: url('/image/Wavebg.svg');
+				background-size: cover;
+				background-position: center;
+			}
+		</style>
+	</head>
+	<body class="font-sans">
+		<header class="bg-white shadow-sm">
+			<nav class="container mx-auto px-4 py-3">
+				<div class="flex justify-between items-center">
+					<a href="{{ path('app_home') }}" class="text-2xl font-bold text-blue-500">Profilau.top</a>
 
-    <main>
-        {% block hero %}
-        <section class="hero-image h-96 flex items-center justify-center">
-            <div class="text-center text-white">
-                <h1 class="text-4xl font-bold mb-4">Trouvez votre emploi idéal</h1>
-                <form class="flex justify-center">
-                    <input type="text" placeholder="Poste recherché" class="px-4 py-2 w-64 rounded-l-lg focus:outline-none">
-                    <input type="text" placeholder="Ville, département, région" class="px-4 py-2 w-64 focus:outline-none">
-                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-r-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                </form>
-            </div>
-        </section>
-        {% endblock %}
+					<ul class="flex space-x-4 items-center">
+						<li>
+							<a href="{{ path('app_home') }}" class="text-gray-600 hover:text-blue-500 flex items-center">
+								<span class="mr-2">{{ ux_icon('iconoir:home') }}</span>
+								Accueil
+							</a>
+						</li>
+						<li>
+							<a href="{{ path('app_job_offer') }}" class="text-gray-600 hover:text-blue-500 flex items-center">
+								<span class="mr-2">{{ ux_icon('hugeicons:job-search') }}</span>
+								Offres d'emploi
+							</a>
+						</li>
+						<li>
+							<a href="{{ path('app_cover_letter') }}" class="text-gray-600 hover:text-blue-500 flex items-center">
+								<span class="mr-2">{{ ux_icon('ph:note') }}</span>
+								Lettres de motivation
+							</a>
+						</li>
+						<li>
+							<a href="{{ path('app_api_job_offer') }}" class="text-gray-600 hover:text-blue-500 flex items-center">
+								<span class="mr-2">{{ ux_icon('hugeicons:api') }}</span>
+								API Offres d'emploi
+							</a>
+						</li>
+						<li>
+							<a href="{{ path('app_dashboard') }}" class="text-gray-600 hover:text-blue-500 flex items-center">
+								<span class="mr-2">{{ ux_icon('fluent-mdl2:b-i-dashboard') }}</span>
+								Tableau de bord
+							</a>
+						</li>
+					</ul>
 
-        <div class="container mx-auto px-4 py-8">
-            {% block body %}{% endblock %}
-        </div>
-    </main>
+					<div class="flex items-center space-x-4">
+						{% if app.user %}
+							<p class="text-gray-600">Connecté</p>
+							<a href="{{ path('app_logout') }}" class="bg-red-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Se déconnecter</a>
+						{% else %}
+							<a href="{{ path('app_login') }}" class="text-gray-600 hover:text-blue-500">Se connecter</a>
+							<a href="{{ path('app_registration') }}" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">S'inscrire</a>
+						{% endif %}
+					</div>
+				</div>
+			</nav>
+		</header>
 
-    <footer class="bg-gray-100 mt-8">
-        <div class="container mx-auto px-4 py-6 text-center text-gray-600">
-            &copy; 2024 VotreJob. Tous droits réservés.
-        </div>
-    </footer>
-</body>
-</html>
+		<main>
+			{% block hero %}
+				<section class="hero-image h-96 flex items-center justify-center">
+					<div class="text-center">
+						<img src="/image/light.png" alt="Profil au top" class="mx-auto mb-4" style="max-width: 300px;">
+
+					</div>
+				</section>
+			{% endblock %}
+
+			<div class="container  mx-auto px-4 py-8"> {% block body %}{% endblock %}
+				</div>
+			</main>
+
+			<footer class="bg-gray-100 mt-8">
+				<div class="container mx-auto px-4 py-6 text-center text-gray-600">
+					&copy; 2024 VotreJob. Tous droits réservés.
+				</div>
+			</footer>
+		</body>
+	</html>
